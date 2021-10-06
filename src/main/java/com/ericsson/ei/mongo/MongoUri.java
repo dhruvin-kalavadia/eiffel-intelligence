@@ -17,11 +17,8 @@
 package com.ericsson.ei.mongo;
 
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.data.mongodb.config.MongoCredentialPropertyEditor;
 
-//import com.mongodb.MongoClientURI;
-import com.mongodb.ConnectionString;
-import com.mongodb.MongoCredential;
+import com.mongodb.MongoClientURI;
 import com.mongodb.MongoConfigurationException;
 
 public class MongoUri {
@@ -88,8 +85,7 @@ public class MongoUri {
      */
     public static String extractPasswordFromUri(String inputUri) {
         String password = "";
-        //final MongoClientURI uri = new MongoClientURI(inputUri);
-        ConnectionString uri = new ConnectionString(inputUri);
+        final MongoClientURI uri = new MongoClientURI(inputUri);
         final char[] passwordCharList = uri.getPassword();
         if (passwordCharList != null) {
             password =  new String(passwordCharList);

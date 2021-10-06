@@ -41,8 +41,7 @@ import com.ericsson.ei.test.utils.TestConfigs;
 import com.ericsson.ei.waitlist.WaitListStorageHandler;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-//import com.mongodb.MongoClient;
-import com.mongodb.client.MongoClient;
+import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.rabbitmq.client.Channel;
@@ -207,7 +206,7 @@ public abstract class FlowTestBase extends AbstractTestExecutionListener {
         }
         MongoDatabase db = mongoClient.getDatabase(database);
         MongoCollection table = db.getCollection(collection);
-        return table.countDocuments();
+        return table.count();
     }
 
     protected void waitForEventsToBeProcessed(int eventsCount) throws Exception {

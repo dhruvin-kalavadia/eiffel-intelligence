@@ -42,8 +42,7 @@ import com.ericsson.ei.utils.HttpRequest;
 import com.ericsson.ei.utils.HttpRequest.HttpMethod;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-//import com.mongodb.MongoClient;
-import com.mongodb.client.MongoClient;
+import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
@@ -240,7 +239,7 @@ public abstract class IntegrationTestBase extends AbstractTestExecutionListener 
         MongoClient mongoClient = mongoDBHandler.getMongoClient();
         MongoDatabase db = mongoClient.getDatabase(database);
         MongoCollection collection = db.getCollection(collectionName);
-        return collection.countDocuments();
+        return collection.count();
     }
 
     /**

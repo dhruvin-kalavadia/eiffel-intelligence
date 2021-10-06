@@ -60,8 +60,7 @@ import com.ericsson.eiffelcommons.subscriptionobject.RestPostSubscriptionObject;
 import com.ericsson.eiffelcommons.subscriptionobject.SubscriptionObject;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mongodb.BasicDBObject;
-//import com.mongodb.MongoClient;
-import com.mongodb.client.MongoClient;
+import com.mongodb.MongoClient;
 
 @TestPropertySource(properties = {
         "spring.data.mongodb.database: SubscriptionServiceTest",

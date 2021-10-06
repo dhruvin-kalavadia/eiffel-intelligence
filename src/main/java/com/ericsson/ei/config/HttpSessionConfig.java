@@ -5,7 +5,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.session.data.mongo.MongoIndexedSessionRepository;
 import org.springframework.session.data.mongo.MongoOperationsSessionRepository;
 import org.springframework.session.data.mongo.config.annotation.web.http.EnableMongoHttpSession;
 import org.springframework.session.web.http.HttpSessionIdResolver;
@@ -21,8 +20,8 @@ public class HttpSessionConfig {
 
     @Primary
     @Bean
-    public MongoIndexedSessionRepository mongoIndexedSessionRepository(MongoOperations mongoOperations) {
-    	MongoIndexedSessionRepository repository = new MongoIndexedSessionRepository(mongoOperations);
+    public MongoOperationsSessionRepository mongoSessionRepository(MongoOperations mongoOperations) {
+        MongoOperationsSessionRepository repository = new MongoOperationsSessionRepository(mongoOperations);
         repository.setMaxInactiveIntervalInSeconds(maxInactiveIntervalInSeconds);
         return repository;
     }

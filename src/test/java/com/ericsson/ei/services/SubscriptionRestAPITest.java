@@ -49,7 +49,7 @@ import com.ericsson.ei.exception.SubscriptionNotFoundException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@WebMvcTest(value = SubscriptionController.class)
+@WebMvcTest(value = SubscriptionController.class, secure = false)
 public class SubscriptionRestAPITest {
 
     private static final String SUBSCRIPTION = "src/test/resources/subscription_single.json";

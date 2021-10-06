@@ -42,8 +42,7 @@ import com.ericsson.ei.subscription.SubscriptionHandler;
 import com.ericsson.ei.test.utils.TestConfigs;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-//import com.mongodb.MongoClient;
-import com.mongodb.client.MongoClient;
+import com.mongodb.MongoClient;
 
 import de.flapdoodle.embed.mongo.tests.MongodForTestsFactory;
 
