@@ -76,7 +76,9 @@ public class MongoDBHandler {
     // based on connection data in properties file
     @PostConstruct
     public void init() throws AbortExecutionException {
+    	LOGGER.error(">>>>>>>> Inside init");
         createMongoClient();
+        LOGGER.error(">>>>>>>> Done with init");
     }
 
     @PreDestroy
@@ -249,6 +251,7 @@ public class MongoDBHandler {
      */
     public boolean dropDocument(String dataBaseName, String collectionName, MongoQuery query) {
         try {
+        	LOGGER.error(">>>>>>>>> dataBaseName:"+dataBaseName+" collectionName:"+collectionName+" dbObjectCondition:"+query.getQueryString());
             boolean result = doDrop(dataBaseName, collectionName, query);
             return result;
         } catch (Exception e) {
@@ -340,13 +343,18 @@ public class MongoDBHandler {
     }
 
     private void createMongoClient() throws AbortExecutionException {
+    	LOGGER.error(">>>>>>>> Inside createMongoClient");
+    	LOGGER.error(">>>>>>>> mongoProperties.getUri()-->"+mongoProperties.getUri());
         if (StringUtils.isBlank(mongoProperties.getUri())) {
+        	LOGGER.error(">>>>>>>> mongoProperties.getUri() thowing exception now-->"+mongoProperties.getUri());
             throw new MongoConfigurationException(
                     "Failure to create MongoClient, missing config for spring.data.mongodb.uri:");
         }
 
         //MongoClientURI uri = new MongoClientURI(mongoProperties.getUri());
+        LOGGER.error(">>>>>>>> Creating mongoClient now.");
         mongoClient = MongoClients.create(mongoProperties.getUri());
+        LOGGER.error(">>>>>>>> DONE creating mongoClient----> "+ mongoClient);
         //mongoClient = new MongoClient(uri);
     }
 
@@ -575,6 +583,7 @@ public class MongoDBHandler {
     }
     
     public boolean checkMongoDbStatus(String dataBaseName) {
+    	LOGGER.error(">>>>>>>> Inside checkMongoDbStatus");
         MongoDatabase db;
         List<String> collectionList;
         try {
