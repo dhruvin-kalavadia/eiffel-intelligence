@@ -35,11 +35,8 @@ import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfi
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.FilterType;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.security.config.annotation.web.WebSecurityConfigurer;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -51,16 +48,20 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import com.ericsson.ei.controller.SubscriptionController;
 import com.ericsson.ei.controller.model.Subscription;
+import com.ericsson.ei.encryption.Encryptor;
 import com.ericsson.ei.exception.SubscriptionNotFoundException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-//@WebMvcTest(value = SubscriptionController.class, excludeAutoConfiguration = SecurityAutoConfiguration.class)
-@EnableAutoConfiguration(exclude = SecurityAutoConfiguration.class)
-@AutoConfigureMockMvc(addFilters=false)
-@WebMvcTest(value = SubscriptionController.class,
-	    excludeFilters = @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = WebSecurityConfigurer.class),
-	    excludeAutoConfiguration = SecurityAutoConfiguration.class)
+@WebMvcTest(value = SubscriptionController.class)
+//@EnableAutoConfiguration(exclude = SecurityAutoConfiguration.class)
+//@AutoConfigureMockMvc(addFilters=false)
+/*
+ * @WebMvcTest(value = SubscriptionController.class, excludeFilters
+ * = @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes =
+ * WebSecurityConfigurer.class), excludeAutoConfiguration =
+ * SecurityAutoConfiguration.class)
+ */
 public class SubscriptionRestAPITest {
 
     private static final String SUBSCRIPTION = "src/test/resources/subscription_single.json";
@@ -81,9 +82,9 @@ public class SubscriptionRestAPITest {
     @MockBean
     private SecurityContext securityContext;
     
-	/*
-	 * @MockBean private Encryptor encryptor;
-	 */
+	
+	@MockBean private Encryptor encryptor;
+	
 
     private ObjectMapper mapper = new ObjectMapper();
 
