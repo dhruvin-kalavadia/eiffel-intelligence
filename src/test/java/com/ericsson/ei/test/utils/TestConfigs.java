@@ -16,7 +16,6 @@ import org.springframework.util.SocketUtils;
 
 import com.ericsson.ei.utils.AMQPBrokerManager;
 import com.mongodb.client.ListDatabasesIterable;
-//import com.mongodb.MongoClient;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCursor;

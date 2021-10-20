@@ -33,7 +33,6 @@ import org.junit.Test;
 import com.ericsson.ei.test.utils.TestConfigs;
 import com.mongodb.ServerAddress;
 import com.mongodb.client.ListDatabasesIterable;
-//import com.mongodb.MongoClient;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.internal.MongoClientImpl;
@@ -101,7 +100,6 @@ public class MongoDBHandlerTest {
 	
         when(client.listDatabases()).thenReturn(documents);
         when(cursor.getServerAddress()).thenReturn(new ServerAddress());
-        //mongoDBHandler.setMongoClient(client);
         assertTrue(mongoDBHandler.isMongoDBServerUp());
 
         //doThrow(Exception.class).when(cursor.getServerAddress());

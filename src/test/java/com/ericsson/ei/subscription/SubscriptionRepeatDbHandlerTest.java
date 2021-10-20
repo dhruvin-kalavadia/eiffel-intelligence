@@ -33,7 +33,6 @@ import com.ericsson.ei.mongo.MongoCondition;
 import com.ericsson.ei.mongo.MongoDBHandler;
 import com.ericsson.ei.utils.FunctionalTestBase;
 import com.mongodb.BasicDBObject;
-//import com.mongodb.util.JSON;
 
 @TestPropertySource(properties = {
         "spring.data.mongodb.database: SubscriptionRepeatDbHandlerTest",

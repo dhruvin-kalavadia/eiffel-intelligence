@@ -41,7 +41,6 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mongodb.BasicDBObject;
 import com.mongodb.MongoClientException;
-//import com.mongodb.util.JSON;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -268,7 +267,6 @@ public class ObjectHandler {
                     documentLocked = false;
                     BasicDBObject basicDBObject=new BasicDBObject(result);
                     return basicDBObject.toString();
-                    //return JSON.serialize(result);
                 }
                 // To Remove
                 LOGGER.debug("Waiting by {} thread", Thread.currentThread().getId());
